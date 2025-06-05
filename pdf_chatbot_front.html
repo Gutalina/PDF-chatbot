@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Chatbot</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; }
+        input, button { padding: 10px; font-size: 16px; width: 100%; margin-top: 10px; }
+        #response { margin-top: 20px; white-space: pre-wrap; border-left: 4px solid #ccc; padding-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Ask any question about Hugging Face NLP Course </h1>
+    <input id="question" type="text" placeholder="Type your question here..." />
+    <button onclick="ask()">Ask</button>
+    <div id="response"></div>
+
+    <script>
+        async function ask() {
+            const question = document.getElementById("question").value;
+            const responseBox = document.getElementById("response");
+            responseBox.textContent = "⏳ Thinking...";
+
+            try {
+                const response = await fetch("http://localhost:8000/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ question })
+                });
+
+                if (!response.ok) {
+                    responseBox.textContent = "❌ Error: " + response.statusText;
+                    return;
+                }
+
+                const data = await response.json();
+                responseBox.textContent = data.answer;
+            } catch (error) {
+                responseBox.textContent = "⚠️ Failed to connect to chatbot.";
+            }
+        }
+    </script>
+</body>
+</html>
+
