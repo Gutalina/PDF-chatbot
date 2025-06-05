@@ -31,7 +31,7 @@ It uses semantic search (`paraphrase-multilingual`) and a generative LLM (`mistr
 - `pdf_chatbot_front.html` — simple chat interface
 - `example.pdf` — any PDF file 
 
-This project was tested using the [Hugging Face NLP Course PDF](https://huggingface.co/learn/llm-course/chapter1/1). You can download the PDF manually.
+This project was tested using the [Hugging Face NLP Course PDF](https://figshare.com/articles/book/_b_Hands-On_NLP_with_Hugging_Face_A_Practical_Guide_for_University-Level_Education_in_Modern_Language_Processing_Technologies_b_/25764642?file=46153470). You can download the PDF manually.
 
 
 ## How to Run
